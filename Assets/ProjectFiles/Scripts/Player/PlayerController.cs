@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 namespace prasetion
 {
 
-    public class PlayerController : MonoBehaviour, prasetion.PlayerInput.IPlayerActions
+    public class PlayerController : MonoBehaviour //, prasetion.PlayerInput.IPlayerActions
     {
 
         PlayerInput controls;
@@ -28,22 +28,22 @@ namespace prasetion
             playerMovement = GetComponent<PlayerMovement>();
         }
 
-        public void OnEnable()
-        {
-            if (controls == null)
-            {
-                controls = new PlayerInput();
-                // Tell the "gameplay" action map that we want to get told about
-                // when actions get triggered.
-                controls.Player.SetCallbacks(this);
-            }
-            controls.Player.Enable();
-        }
+        // public void OnEnable()
+        // {
+        //     if (controls == null)
+        //     {
+        //         controls = new PlayerInput();
+        //         // Tell the "gameplay" action map that we want to get told about
+        //         // when actions get triggered.
+        //         controls.Player.SetCallbacks(this);
+        //     }
+        //     controls.Player.Enable();
+        // }
 
-        public void OnDisable()
-        {
-            controls.Player.Disable();
-        }
+        // public void OnDisable()
+        // {
+        //     controls.Player.Disable();
+        // }
 
         //Update Loop - Used for calculating frame-based data
         void Update()
@@ -58,6 +58,13 @@ namespace prasetion
             // throw new NotImplementedException();
             Vector2 inputMovement = value.ReadValue<Vector2>();
             rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+        }
+
+        [SerializeField] Transform targetPosition;
+        [ContextMenu("Move")]
+        public void Move()
+        {
+            rawInputMovement = new Vector3(targetPosition.position.x, 0, targetPosition.position.z);
         }
 
         public void OnAttack(InputAction.CallbackContext value)
