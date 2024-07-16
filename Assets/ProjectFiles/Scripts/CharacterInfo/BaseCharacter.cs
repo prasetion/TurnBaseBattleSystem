@@ -7,10 +7,11 @@ public abstract class BaseCharacter : MonoBehaviour, ICharacterInfo
 
     [SerializeField] protected int health;
     [SerializeField] protected string characterName;
+    [SerializeField] protected int attack;
 
-    public void GetHealth()
+    public int GetHealth()
     {
-        Debug.Log("Health: " + health);
+        return health;
     }
 
     public void SetHealth(int amount)
@@ -18,5 +19,9 @@ public abstract class BaseCharacter : MonoBehaviour, ICharacterInfo
         health -= amount;
     }
 
+    public int GetAttack()
+    {
+        return attack;
+    }
 
 }

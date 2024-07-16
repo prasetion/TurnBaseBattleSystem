@@ -1,5 +1,6 @@
 public interface ICharacterInfo
 {
-    public void GetHealth();
+    public int GetHealth();
     public void SetHealth(int amount);
+    public int GetAttack();
 }
