@@ -24,4 +24,9 @@ public abstract class BaseCharacter : MonoBehaviour, ICharacterInfo
         return attack;
     }
 
+    public string GetName()
+    {
+        return characterName;
+    }
+
 }

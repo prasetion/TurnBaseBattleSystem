@@ -12,6 +12,7 @@ public class LoginController : MonoBehaviour
     [SerializeField] TMP_InputField usernameField;
     [SerializeField] TMP_InputField passwordField;
     [SerializeField] Button loginButton;
+    public UnityEngine.Events.UnityEvent OnFinish;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class LoginController : MonoBehaviour
 
     void Login()
     {
+        loginButton.interactable = false;
         LoginData datas = new LoginData();
         datas.email = usernameField.text;
         datas.password = passwordField.text;
@@ -33,11 +35,14 @@ public class LoginController : MonoBehaviour
         if (result == UnityWebRequest.Result.Success)
         {
             Debug.Log("success login");
+            OnFinish.Invoke();
         }
         else
         {
             Debug.Log("fail login");
         }
+
+        loginButton.interactable = true;
     }
 
     [System.Serializable]
