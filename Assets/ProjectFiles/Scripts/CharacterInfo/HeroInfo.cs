@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class HeroInfo : BaseCharacter
 {
-
+    void Start()
+    {
+        TurnBaseManager.Instance.currentHero = transform;
+    }
 }

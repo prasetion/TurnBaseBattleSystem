@@ -8,6 +8,8 @@ public abstract class BaseCharacter : MonoBehaviour, ICharacterInfo
     [SerializeField] protected int health;
     [SerializeField] protected string characterName;
     [SerializeField] protected int attack;
+    public enum CharType { HERO, ENEMY }
+    [SerializeField] protected CharType charType;
 
     public int GetHealth()
     {
@@ -27,6 +29,16 @@ public abstract class BaseCharacter : MonoBehaviour, ICharacterInfo
     public string GetName()
     {
         return characterName;
+    }
+
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
+    public string GetCharType()
+    {
+        return charType.ToString();
     }
 
 }
