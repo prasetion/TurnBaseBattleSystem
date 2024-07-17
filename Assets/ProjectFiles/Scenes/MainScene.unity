@@ -3369,6 +3369,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 311575861820824300, guid: c862de9b3d239504882102f72fc0dde6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 311575861820983052, guid: c862de9b3d239504882102f72fc0dde6,
         type: 3}
       propertyPath: m_RootOrder
@@ -4032,6 +4037,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 311575861820824300, guid: c862de9b3d239504882102f72fc0dde6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 311575861820983052, guid: c862de9b3d239504882102f72fc0dde6,
         type: 3}
       propertyPath: m_RootOrder
@@ -4214,3 +4224,4 @@ MonoBehaviour:
   health: 100
   characterName: Ahmed
   attack: 30
+  charType: 0

@@ -5,23 +5,23 @@ using UnityEngine;
 public abstract class BaseCharacter : MonoBehaviour, ICharacterInfo
 {
 
-    [SerializeField] protected int health;
+    [SerializeField] protected float health;
     [SerializeField] protected string characterName;
-    [SerializeField] protected int attack;
+    [SerializeField] protected float attack;
     public enum CharType { HERO, ENEMY }
     [SerializeField] protected CharType charType;
 
-    public int GetHealth()
+    public float GetHealth()
     {
         return health;
     }
 
-    public void SetHealth(int amount)
+    public void SetHealth(float amount)
     {
-        health -= amount;
+        health = amount;
     }
 
-    public int GetAttack()
+    public float GetAttack()
     {
         return attack;
     }

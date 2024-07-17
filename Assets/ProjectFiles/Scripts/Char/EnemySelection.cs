@@ -38,7 +38,6 @@ public class EnemySelection : MonoBehaviour, IPointerClickHandler
 
     private void PrepareSelection(bool isActive)
     {
-        Debug.Log($"isActive {isActive}");
         selectableObjectMarker.SetActive(isActive);
         isClickable = isActive;
 

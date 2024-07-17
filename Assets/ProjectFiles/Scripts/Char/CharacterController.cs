@@ -33,7 +33,7 @@ public class CharacterController : MonoBehaviour
         // TurnBaseManager.Instance.
     }
 
-    private void GetHit(string targetHit)
+    private void GetHit(string targetHit, float amount)
     {
         if (targetHit.Equals(characterInfo.GetName()))
         {
@@ -52,13 +52,13 @@ public class CharacterController : MonoBehaviour
         if (charName != characterInfo.GetName())
             return;
 
-        Debug.Log($"Move {charName}");
         StartCoroutine(MovementRoutine(charName, arg2, target));
     }
 
     IEnumerator MovementRoutine(string charName, bool arg2, Transform target)
     {
         bool isFinishAttack = false;
+        TurnBaseManager.Instance.CurrentDamage = characterInfo.GetAttack();
 
         characterAnimationController.OnMove(1);
         transform.DOMove(target.position, speedMovement).OnComplete(() =>

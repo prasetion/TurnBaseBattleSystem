@@ -9,17 +9,22 @@ public class TurnBaseManager : Singleton<TurnBaseManager>
     public System.Action OnRestartSelectMovement;
     public System.Action<string, Transform> OnSelectEnemy;
     public System.Action<string, bool, Transform> OnMove;
-    public System.Action<string> OnGetHit;
+    public System.Action<string, float> OnGetHit;
 
+    // Change order in this list
     public List<string> MovementOrder = new List<string> { "Ahmed", "Adam", "Eve" };
     public List<ICharacterInfo> CharacterInformationList = new List<ICharacterInfo>();
 
     bool isNormalAttack;
 
     int currentOrder = 0;
+    float currentDamage = 0;
     string selectedEnemy;
     Transform currentTransformEnemy;
+
     public Transform currentHero;
+
+    public float CurrentDamage { get => currentDamage; set => currentDamage = value; }
 
     public void SelectMovement(string movement)
     {
@@ -46,7 +51,7 @@ public class TurnBaseManager : Singleton<TurnBaseManager>
     IEnumerator GetHitRoutine(string target = "")
     {
         yield return new WaitForSeconds(0.5f);
-        OnGetHit?.Invoke(selectedEnemy);
+        OnGetHit?.Invoke(selectedEnemy, CurrentDamage);
     }
 
     public void Proceed()
