@@ -17,12 +17,14 @@ public class CharacterController : MonoBehaviour
     string targetHit;
 
     [SerializeField] GameObject particleSkill;
+    [SerializeField] EPOOutline.Outlinable outlinable;
 
     // Start is called before the first frame update
     void Start()
     {
         characterInfo = GetComponent<ICharacterInfo>();
         characterAnimationController = GetComponent<CharacterAnimationController>();
+        outlinable = GetComponent<EPOOutline.Outlinable>();
 
         TurnBaseManager.Instance.CharacterInformationList.Add(characterInfo);
 
@@ -63,6 +65,10 @@ public class CharacterController : MonoBehaviour
 
     IEnumerator MovementRoutine(string charName, bool isNormalAttack, Transform target)
     {
+        // indicate this character is moving
+        outlinable.OutlineParameters.Color = Color.blue;
+        outlinable.enabled = true;
+
         bool isFinishAttack = false;
         TurnBaseManager.Instance.CurrentDamage = characterInfo.GetAttack();
 
@@ -112,7 +118,8 @@ public class CharacterController : MonoBehaviour
             yield return null;
 
         yield return new WaitForSeconds(1f);
-
+        outlinable.enabled = false;
+        outlinable.OutlineParameters.Color = Color.yellow;
         TurnBaseManager.Instance.FinishMovement();
     }
 
