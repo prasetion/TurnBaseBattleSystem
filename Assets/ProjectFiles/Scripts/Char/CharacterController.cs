@@ -16,6 +16,8 @@ public class CharacterController : MonoBehaviour
 
     string targetHit;
 
+    [SerializeField] GameObject particleSkill;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,18 +53,29 @@ public class CharacterController : MonoBehaviour
         TurnBaseManager.Instance.OnMove -= StartMovement;
     }
 
-    private void StartMovement(string charName, bool arg2, Transform target)
+    private void StartMovement(string charName, bool isNormalAttack, Transform target)
     {
         if (charName != characterInfo.GetName())
             return;
 
-        StartCoroutine(MovementRoutine(charName, arg2, target));
+        StartCoroutine(MovementRoutine(charName, isNormalAttack, target));
     }
 
-    IEnumerator MovementRoutine(string charName, bool arg2, Transform target)
+    IEnumerator MovementRoutine(string charName, bool isNormalAttack, Transform target)
     {
         bool isFinishAttack = false;
         TurnBaseManager.Instance.CurrentDamage = characterInfo.GetAttack();
+
+        if (!isNormalAttack)
+        {
+            if (particleSkill)
+                particleSkill.SetActive(true);
+        }
+        else
+        {
+            if (particleSkill)
+                particleSkill.SetActive(false);
+        }
 
         characterAnimationController.OnMove(1);
         transform.DOMove(target.position, speedMovement).OnComplete(() =>
@@ -82,7 +95,8 @@ public class CharacterController : MonoBehaviour
             yield return null;
 
         yield return new WaitForSeconds(1f);
-
+        if (particleSkill)
+            particleSkill.SetActive(false);
         bool isFinishBack = false;
         characterAnimationController.OnMove(1);
         transform.DOMove(startPosition, speedMovement).OnComplete(() =>
