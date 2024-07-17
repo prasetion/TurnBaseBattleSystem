@@ -17,11 +17,17 @@ public class UIManager : MonoBehaviour
     [Header("Proceed")]
     [SerializeField] Button proceedButton;
 
+    [Header("Finish")]
+    [SerializeField] GameObject finishPanel;
+    [SerializeField] TMPro.TextMeshProUGUI finishText;
+    [SerializeField] Button restartButton;
+
     // Start is called before the first frame update
     void Start()
     {
         TurnBaseManager.Instance.OnSelectEnemy += EnemySelected;
         TurnBaseManager.Instance.OnRestartSelectMovement += RestartSelectMovement;
+        TurnBaseManager.Instance.OnWin += ShowResult;
 
         attackSelected.onClick.AddListener(() => SelectMovement("Attack"));
         skillSelected.onClick.AddListener(() => SelectMovement("Skill"));
@@ -33,9 +39,17 @@ public class UIManager : MonoBehaviour
             selectEnemyPanel.SetActive(false);
         });
 
+        restartButton.onClick.AddListener(() =>
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        });
+
         selectMovementPanel.SetActive(false);
         selectEnemyPanel.SetActive(false);
         proceedButton.gameObject.SetActive(false);
+        finishPanel.SetActive(false);
+
+
     }
 
 
@@ -43,6 +57,13 @@ public class UIManager : MonoBehaviour
     {
         TurnBaseManager.Instance.OnSelectEnemy -= EnemySelected;
         TurnBaseManager.Instance.OnRestartSelectMovement -= RestartSelectMovement;
+        TurnBaseManager.Instance.OnWin -= ShowResult;
+    }
+
+    private void ShowResult(bool isWin)
+    {
+        finishText.text = isWin ? "You Win!" : "You Lose!";
+        finishPanel.SetActive(true);
     }
 
     private void RestartSelectMovement()

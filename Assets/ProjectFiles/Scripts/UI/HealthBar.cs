@@ -43,7 +43,10 @@ public class HealthBar : MonoBehaviour
             healthUI.DOFillAmount(damageAmount / maxHealth, 0.3f);
 
             if (characterInfo.GetHealth() <= 0)
+            {
+                TurnBaseManager.Instance.RemoveEnemyFromList(charName);
                 gameObject.SetActive(false);
+            }
         }
     }
 

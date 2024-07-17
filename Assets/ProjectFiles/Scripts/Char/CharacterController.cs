@@ -44,6 +44,10 @@ public class CharacterController : MonoBehaviour
 
     void OnDestroy()
     {
+    }
+
+    void OnDisable()
+    {
         TurnBaseManager.Instance.OnMove -= StartMovement;
     }
 
