@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/DataFiles/Scenes/Scene_Example_Warriors.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/ProjectFiles/Scenes/MainScene.unity
+    guid: 37564d1845ebcfa40af8133c9722b581
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f9c2a947082534449a0bab9e23af12c9,
       type: 2}

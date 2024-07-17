@@ -87,6 +87,7 @@ public class TurnBaseManager : Singleton<TurnBaseManager>
 
     public void FinishMovement()
     {
+        // Debug.Log("check: " + !CharacterInformationList.Any(character => character.GetCharType().Contains("HERO")));
         if (!CharacterInformationList.Any(character => character.GetCharType().Contains("HERO")))
         {
             Debug.Log("There are no heroes in the list.");

@@ -3561,6 +3561,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7915621016013348561, guid: c862de9b3d239504882102f72fc0dde6,
         type: 3}
+      propertyPath: charType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7915621016013348561, guid: c862de9b3d239504882102f72fc0dde6,
+        type: 3}
       propertyPath: characterName
       value: Eve
       objectReference: {fileID: 0}
@@ -4477,12 +4482,17 @@ PrefabInstance:
     - target: {fileID: -7915621016013348561, guid: c862de9b3d239504882102f72fc0dde6,
         type: 3}
       propertyPath: attack
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -7915621016013348561, guid: c862de9b3d239504882102f72fc0dde6,
         type: 3}
       propertyPath: health
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -7915621016013348561, guid: c862de9b3d239504882102f72fc0dde6,
+        type: 3}
+      propertyPath: charType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7915621016013348561, guid: c862de9b3d239504882102f72fc0dde6,
         type: 3}
